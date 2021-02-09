@@ -1,0 +1,125 @@
+.left_panel {
+    width: 50%;
+    height: 85%;
+    background-color:whitesmoke;
+    /* border-left-style:solid; */
+    /* border-bottom-style:solid; */
+    /* border-color:whitesmoke; */
+    /* top:10%; */
+    bottom: 0;
+    left:50%;
+    position: absolute;
+}
+.btn,.btn_end{
+    display:inline-block;
+
+}
+
+.btn_end{
+    margin: 25px;
+}
+
+
+
+
+.tp1,.tp2,.tp3,.tp4{
+    
+    
+    height: 15%;
+    background-color:rgb(214, 239, 250);
+    
+    top:0;
+    position: absolute;
+    text-align: center;
+    
+    border-color:lightgrey;
+    font-size: 2vh;
+}
+
+
+
+.tp1{
+    width: 20%;
+    left:10%;
+  
+}
+.tp2{
+    width: 20.1%;
+    left:30%;
+  
+    
+}
+.tp3{
+    width: 25%;
+    left:50%;
+ 
+}
+.tp4{
+    width: 25%;
+    left:75%;
+
+}
+
+.right_bottom {
+    width: 50%;
+    height: 85%;
+    bottom: 0;    
+    position: absolute;
+}
+
+.ori{
+    /* font: bold 10px sans-serif;  */
+    fill:red;
+}
+
+.rev{
+    fill:blue;
+}
+
+.done{
+    fill:green;
+}
+
+.emphasize{
+    text-decoration-line: underline;
+    font-weight:bold;
+}
+
+.bold{
+    /* text-decoration-line: underline; */
+    font-weight:bold;
+}
+
+
+#menu {  
+    margin-top:0%;
+    margin-left:-10%;
+    font-size:1.5vh;
+    color: black;
+    display: none;    
+}
+
+#menu li a{
+    color: black;
+}
+
+#sub-menu{
+    margin-left:-20%;
+}
+
+#menu_style {
+    margin-left:5%;
+    display: inline-block;    
+    font-size: 3vh;
+    cursor: pointer;
+    color: black;    
+}
+
+.menu_panel{
+    width:10%;
+    height:15%;
+    background-color:rgb(214, 239, 250);
+    top:0;
+    left:0;
+    position: absolute;
+}
