@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html >
+
+<head>
+
+	<link rel="stylesheet" type="text/css" href="dist/fullpage.css" />
+    <link rel="stylesheet" type="text/css" href="examples.css" />
+    <link rel="stylesheet" type="text/css" href="hp.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+</head>
+<body>
+
+    <div>
+
+            <ul id="menu">
+                <li data-menuanchor="firstPage" class="active"><a href="#firstPage">Home</a></li>
+                <li data-menuanchor="secondPage"><a href="#secondPage">Algorithms</a></li>
+                <li data-menuanchor="3rdPage"><a href="#3rdPage">About</a></li>
+                
+            </ul>
+    
+    </div>
+
+
+<div id="fullpage">
+	<div class="section" id="section0">        
+        <h1>
+            Visual Algorithms
+        </h1>
+        <h3>
+            Customizable animations to explain obscure algorithms
+        </h3>
+    </div>
+
+
+
+	<div class="section" id="section1">
+        <div class="chapter-submenu">
+            <ul class="menu-sub">
+                <li class="active" id='submenu-bp'><a href="#secondPage/slide1">Manachar</a></li>
+                <li id='submenu-cp'><a href="#secondPage/slide2">Knuth-Morris-Pratt</a></li>
+                <li id='submenu-pd'><a href="#secondPage/slide3">Hare and Tortoise</a> </li>              
+            </ul>
+        </div>
+ 
+
+ 
+		<div class="slide" id="slide1" data-anchor="slide1">
+            <div class='left1'>
+                <h2>Manachar</h2>
+                <a href="Manachar/Manachar.html">
+                    <div id="bp" class='rec_button'>Go to Manachar</div>
+                </a>       
+            </div>
+            <div class='right1'>                
+                    
+                    In computer science, the longest palindromic substring or longest symmetric factor problem is the problem 
+                    of finding a maximum-length contiguous substring of a given string that is also a palindrome. 
+                    For example, the longest palindromic substring of "bananas" is "anana". The longest palindromic substring 
+                    is not guaranteed to be unique; for example, in the string "abracadabra", there is no palindromic substring 
+                    with length greater than three, but there are two palindromic substrings with length three, namely, 
+                    "aca" and "ada". 
+                    <br><br>                    
+                    Manacher (1975) invented a linear time algorithm, it is used to find the Longest Palindromic Sub-string in any string. 
+                    This algorithm is required to solve sub-problems of some very hard problems.   
+                
+            </div>            
+        </div>
+
+        <div class="slide" id="slide2" data-anchor="slide2">
+            <div class='left2'>
+                <h2>Knuth–Morris–Pratt</h2>
+                <a href="KMP/KMP.html">
+                    <div id="bp" class='rec_button'>Go to KMP</div>
+                </a>       
+            </div>
+
+            <div class='right2'> 
+                KMP algorithm was the first linear time complexity algorithm for string matching.
+                It is used to find a "Pattern" in a "Text".
+                <br><br>
+                In real world KMP algorithm is used in those applications where pattern matching is done in long strings, 
+                whose symbols are taken from an alphabet with little cardinality. 
+                A relevant example is the DNA alphabet, which consists on only 4 symbols (A,C,G,T).
+                                   
+            </div>       
+        
+        </div>
+        
+        <div class="slide" id="slide3" data-anchor="slide3">
+            <div class='left3'>
+                <h2>Hare & Tortoise</h2>
+                <a href="Hare&Tortoise/Hare&Tortoise.html">
+                    <div id="bp" class='rec_button'>Go to Hare & Tortoise</div>
+                </a>       
+            </div>
+
+            <div class='right3'> 
+                Floyd's cycle-finding algorithm is a pointer algorithm that uses only two pointers, 
+                which move through the sequence at different speeds. 
+                It is also called the "tortoise and the hare algorithm", 
+                alluding to Aesop's fable of The Tortoise and the Hare.
+                <br><br>
+                In computer science, it is used to solve cycle detection or cycle finding problems.                                       
+            </div>              
+        </div>
+    </div>
+    
+	<div class="section" id="section2">
+        <p class="about">
+            Hello visitors, this is Sean.<br><br>
+            I'm passionate about creating visual animations to make obscure algorithms more accessible,<br>
+            and this website will be expected to launch more algorithms animations in the future.<br><br>
+            Thank you for your valuable time to visit [Visual Algorithms].<br>
+            <br><br>
+
+            Email: xzho7240@alumni.sydney.edu.au
+        </p>
+    </div>
+	
+</div>
+
+<script type="text/javascript" src="dist/fullpage.js"></script>
+<script type="text/javascript" src="examples.js"></script>
+
+
+<script type="text/javascript">
+    var myFullpage = new fullpage('#fullpage', {
+            verticalCentered: false,
+            anchors: ['firstPage', 'secondPage', '3rdPage'],
+            menu: '#menu',
+            // lazyLoad: true
+            css3:false
+        })   
+        var visibleSectionIndex = 0;
+
+    function test(obj){
+        $('.menu-sub li.active').removeClass('active');
+        $(obj).addClass('active');
+
+    }
+    
+    $('.menu-sub li').attr('onclick','test(this)')
+</script>
+
+</body>
+</html>
+
+
+
+
