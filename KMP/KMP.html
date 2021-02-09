@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+
+    <body>  
+        <div class='menu_panel'>
+            <li id='menu_style' onclick = "menu()">&#9776
+                <ul id="menu">
+                    <li><a href="../hp.html#firstPage">Homepage</a></li>
+                    <li><a href="../hp.html#secondPage">Algorithms</a>
+                        <ul id='sub-menu'>
+                            <a href="../Manachar/manachar.html">Manachar</a><br>
+                            <a href="../KMP/KMP.html">Knuth-Morris-Pratt</a><br>
+                            <a href="../Hare&Tortoise/Hare&Tortoise.html">Hare and Tortoise</a>
+                        </ul>
+                    </li>
+                    <li><a href="../hp.html#3rdPage">About</a></li>
+                    
+                </ul>
+            </li>
+        </div>
+        
+        <div id='sp' class='step_panel'>           
+
+            <svg id='sp_svg' width=100% height=100%></svg>
+        </div>     
+
+        <div id='lp' class='left_panel'>
+            <div class='des'>
+            <g id='Introduction'>
+                <h1>Knuth–Morris–Pratt algorithm (KMP)</h1>
+                
+                <br><br>                
+                    KMP algorithm is an efficient patterns matching algorithm, 
+                    used for searching occurences of a pattern string in a text string.
+                <br><br>                
+                    Here, we will use text string 'acabaabaabcaccaabc' and pattern string 
+                    'abaabcac' to go throught this algorithm. Press <button type="button" 
+                    style="font-size:1.5vh;cursor: pointer; font-weight:bold" class="btn btn-default" onclick="generate();context('generate');"
+                    >Generate string</button> when you ready!                       
+                <br><br>                         
+                 
+                <!-- <p id='ttt'>111</p> -->
+                <g id='generate' class=hidden>                   
+                        To locate the occurence of patten string within the text one, the most intuitive method is brute force.
+                        That is to compare pattern string with each sub-string of text with same length. Press 
+                        <button type="button" class="btn btn-default" style="font-size:1.5vh;cursor: pointer; font-weight:bold" onclick="brute_force();
+                        context('brute_force');">Brute Force</button> to go on!       
+                                   
+                </g>
+                <br><br>                     
+                <g id='brute_force' class=hidden>                    
+                        Green cube means matching; red cube means unmatching; 
+                        grey cube shows the sub-string of text which is fully matched with pattern string.
+                        <br><br>
+                        It is inefficient, the worst case of time complexity would be O(n*m), 
+                        n and m are the length of text and pattern. Click <button type="button" class="btn btn-default" 
+                        style="font-size:1.5vh;cursor: pointer; font-weight:bold" onclick="improvement(2); context('improvement')"
+                        >Improvement</button> to see how can we improve the efficiency.                                       
+                </g>
+                <br><br>
+                <g id='improvement' class=hidden>                    
+                    For example, once we had compare sub-string3(start at index=2) with pattern string, 
+                    we got the first 5 letters 'abaab' matched, and unmatched cubes started at index=7.
+                    <br><br>
+                    We can take advantage of the known partially matched fragment 'abaab', because in following four (4=5-1)
+                     substrings (start at index=3,4,5,6) comparisons, all the sub-strings 
+                     in front of unmatched index=7 are prefixes or suffixes of 'abaab'.
+                    <br><br>
+                    Please click the button 'Pre/Suffix' from left panel to access next section.  
+                </g>     
+            </g>
+
+            <g id='Pre/Suffix' class=hidden>
+                <h1>Prefix and Suffix</h1> 
+                <br><br>
+                
+                    In this section, we will take the partially matched fragment 'abaab' from previous section as an example,
+                    to explain how to utilize prefixes and suffixes to improve algorithm efficiency.
+                    <br><br>
+                    Obviously, if a string is made up of N letters, it will have N-1 prefixes and N-1 suffixes.
+                    Let's pair each prefix with same-length-suffix, click <button type="button" style="font-size:1.5vh; cursor: pointer; font-weight:bold" 
+                    class="btn btn-default" onclick="pre_suf('abaab');context('identical')">Pair</button> to continue.                        
+                
+                <br><br>
+                <g id='identical' class=hidden>                  
+                      The longest identical prefix and suffix are 'ab', and its length is 2. That means we can skip 
+                      the comparison of prefix and suffix with length 4 or 3, cause they are definitely unmatched.
+                      Please click <button type="button" style="font-size:1.5vh; cursor: pointer; font-weight:bold" class="btn btn-default" onclick="skip(2);
+                      context('skip')">Skip</button> to review the improved brute force process.                 
+                </g>
+                <br><br>
+                <g id='skip' class=hidden>
+                    When we get matched fragment 'abaab' after comparison between substring 3 and pattern;
+                    we can skip comparison between substring 4 and pattern, due to from above pair chart, 
+                    we know prefix and suffix with length 4 are not identical; so does that of substring 5
+                    with prefix and suffix of length 3; once starting to compare substring 6 and pattern, 
+                    we can directly go to the unmatched index 7.
+                    <br><br>
+                    So once we get matched fragment from one comparison, we can pair the prefix and suffix,
+                     find the longest length of matched pair: 2, using unmatched index 7 to deduct that, 
+                     then 5 is the start index of next substring which should be compared. So it is not 
+                     necessary to compare each sub-string one letter behind the previous one.
+                     <br><br>
+                     Now, we need to set a table store those information, please press the "PMT" button 
+                     on left panel to access to the next chapter!
+                </g>
+            </g>
+            
+
+            <g id="PMT" class=hidden>       
+                <h1>Partial Match Table(PMT)</h1>
+                <br><br>
+
+                The pattern string 'abaabcac' could have multiple cases of partial matched fragment when 
+                searching occurences in text string. We can caculate the longest length of each case, 
+                please click <button type="button" style="font-size:1.5vh;cursor: pointer; font-weight:bold"
+                 class="btn btn-default" onclick="pmt();context('patial_match')">PMT</button> to see all the cases.
+                <br><br>
+                
+                <g id='patial_match' class=hidden>   
+                    So we can record all cases' longest length in a table which is correspond to pattern string.
+                    Actually in order to facilitate coding, we will use another table "NEXT" instead, which shifts "PMT" 
+                    elements one position to the right, and fill "-1" at first index. Click <button type="button" 
+                    style="font-size:1.5vh;cursor: pointer; font-weight:bold" class="btn btn-default" onclick="next();context('NEXT')">NEXT</button> 
+                    to see these two tables.                                  
+                </g>           
+                <br><br>
+                <g id='NEXT' class=hidden>
+                    Now we can use 'NEXT' table to skip unecessary comparion, proceeding to next chapter by press left "Animation" button.  
+                </g>                
+            </g>
+<!--  -->
+
+            <g id="Animation" class=hidden>
+                <h1>Complete Process</h1>
+                <br><br>
+
+                Press <button type="button" style="font-size:1.5vh;cursor: pointer; font-weight:bold" class="btn btn-default" onclick="Animation();">
+                Animation</button> to <tspan class="emphasize">initialize/reset</tspan> the animation.
+
+                <br><br>
+
+                Press <button id='ani_btn' type="button" style="font-size:1.5vh;cursor: pointer; font-weight:bold" class="btn btn-default" onclick="run()">Run</button>
+                to start!
+
+                <br><br>
+                
+                TP: text string pointer
+                <br>
+                PP: pattern string pointer
+                <br>    
+            </g>
+        </div>
+        </div>   
+   
+
+        <div id='rp' class='right_panel'>
+            <svg id="rp_1" viewbox=0,0,1300,1300></svg>               
+            
+        </div>         
+          
+    
+        <script src=KMP.js></script>
+        <link rel="stylesheet" type="text/css" href="KMP.css">    
+
+
+    </body>
+</html>
+
