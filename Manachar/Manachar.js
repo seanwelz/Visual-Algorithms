@@ -116,7 +116,7 @@ function generate(){
   }else{
     
     document.getElementById('start').setAttribute('disabled',true)
-    
+    document.getElementById('select_center').innerHTML=""
     document.getElementById('aaa').innerHTML = '';  
     document.getElementById('ddd').innerHTML=""
     document.getElementById('eee').innerHTML=""
